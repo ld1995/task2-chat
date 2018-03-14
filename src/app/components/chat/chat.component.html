@@ -1,0 +1,16 @@
+<div class="my-3 p-1 bg-white rounded box-shadow">
+  <h3 class="border-bottom border-gray pb-1 mb-0 text-gray-dark">Message List</h3>
+    <div *ngFor="let message of messages | async">
+      <div class="my-1 p-1 bg-white rounded box-shadow">
+        <div class="media text-muted pt-1">
+          <img data-src="{{message.icon}}" width="64" height="64" class="mr-2 rounded">
+          <p class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@{{message.username}}</strong>
+            {{message.post}}
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+<input type="text" id="message" placeholder="Enter your message..."
+       (keyup.enter)="sendPost($event.target.value); $event.target.value ='';" maxlength="120" [(ngModel)] ="post" />
